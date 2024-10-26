@@ -25,6 +25,9 @@ html {
 	color: #fff;
 	padding: 1em;
 	font-size: 1em;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 }
 
 .header-content {
@@ -109,16 +112,24 @@ html {
 
 /* Hero Section */
 .hero {
-	background: url("https://via.placeholder.com/1600x500?text=Video+Editing+Company")
-		no-repeat center center/cover;
+	background: url("./assets/asu-hero.png");
 	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	color: #fff;
 	text-align: center;
 }
-
+.hero-content {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+}
 .hero-content h1 {
 	font-size: 3em;
 	color: #fff;
