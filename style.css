@@ -1,0 +1,474 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	color: #333;
+	line-height: 1.6;
+}
+html {
+	scroll-behavior: smooth;
+}
+/* Basic Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+	background-color: #333;
+	color: #fff;
+	padding: 1em;
+	font-size: 1em;
+}
+
+.header-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Logo */
+.logo img {
+	height: 80px;
+	width: 80px;
+}
+
+/* Company Name Centered */
+.company-name {
+	flex: 1;
+	text-align: center;
+	font-size: 1.5em;
+	color: #f5f5f5;
+}
+
+/* Navigation Links */
+.nav-links {
+	display: flex;
+	gap: 1.5em;
+}
+
+.nav-links a {
+	color: #f5f5f5;
+	text-decoration: none;
+	font-size: 1em;
+}
+
+.nav-links a:hover {
+	color: #bbb;
+}
+
+/* Menu Icon for Smaller Screens */
+.menu-icon {
+	display: none;
+	font-size: 1.5em;
+	cursor: pointer;
+	color: #f5f5f5;
+}
+
+/* Dropdown Menu for Smaller Screens */
+.dropdown-menu {
+	display: none;
+	flex-direction: column;
+	background-color: #333;
+	padding: 1em;
+}
+
+.dropdown-menu a {
+	color: #f5f5f5;
+	padding: 0.5em 0;
+	text-decoration: none;
+	font-size: 1em;
+}
+
+.dropdown-menu a:hover {
+	color: #bbb;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+	/* Hide the regular nav links, show the menu icon */
+	.nav-links {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+
+	/* Display the dropdown menu when active */
+	.dropdown-menu.active {
+		display: flex;
+	}
+}
+
+/* Hero Section */
+.hero {
+	background: url("https://via.placeholder.com/1600x500?text=Video+Editing+Company")
+		no-repeat center center/cover;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	text-align: center;
+}
+
+.hero-content h1 {
+	font-size: 3em;
+	color: #fff;
+	margin-bottom: 0.5em;
+}
+
+.hero-content p {
+	font-size: 1.25em;
+	margin-bottom: 1em;
+	color: #fff;
+}
+
+.btn {
+	padding: 0.75em 1.5em;
+	background: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background: #555;
+}
+
+/* About Section */
+.about {
+	padding: 2em;
+	background-color: #f5f5f5;
+	text-align: center;
+	color: #333;
+}
+
+.about h2 {
+	font-size: 2em;
+	color: #333;
+	margin-bottom: 1em;
+}
+
+.about p {
+	font-size: 1.1em;
+	max-width: 800px;
+	margin: auto;
+	color: #666;
+}
+
+/* Services Section Styles */
+.services-section {
+	padding: 3em 1em;
+	background-color: #fff; /* Light background */
+	text-align: center;
+}
+
+.services-section h2 {
+	font-size: 2.5em;
+	margin-bottom: 1.5em;
+	color: #333; /* Darker text for visibility */
+}
+
+.services-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* Center the items */
+	gap: 2em; /* Spacing between service items */
+}
+
+.service-item {
+	background: white; /* White background for each service */
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	padding: 1.5em;
+	width: 250px; /* Fixed width for consistency */
+	transition: transform 0.3s; /* Smooth transform */
+}
+
+.service-item h3 {
+	font-size: 1.8em;
+	margin-bottom: 0.5em;
+	color: #555; /* Dark grey for service titles */
+}
+
+.service-item p {
+	color: #777; /* Lighter grey for descriptions */
+}
+
+/* Hover Effect */
+.service-item:hover {
+	transform: translateY(-5px); /* Slight lift on hover */
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+	.services-container {
+		flex-direction: column; /* Stack items vertically on small screens */
+		align-items: center; /* Center items */
+	}
+}
+
+/* Samples Section Styles */
+.samples-section {
+	position: relative;
+	height: 80vh; /* Set height as needed */
+	overflow: hidden;
+	color: #fff;
+	text-align: center;
+}
+
+.video-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.video-background video {
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+}
+
+.overlay {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+}
+
+.overlay h2 {
+	font-size: 2.5em;
+	margin-bottom: 0.5em;
+}
+
+.overlay p {
+	font-size: 1.2em;
+	margin-bottom: 1.5em;
+}
+
+.cta-button {
+	padding: 0.75em 1.5em;
+	font-size: 1.1em;
+	color: #fff;
+	background-color: #555; /* Button color */
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+	background-color: #777; /* Darker shade on hover */
+}
+
+/* Pricing Section Styles */
+.pricing-section {
+	padding: 3em 1em;
+	background-color: #f5f5f5; /* Light background */
+	text-align: center;
+}
+
+.pricing-section h2 {
+	font-size: 2.5em;
+	margin-bottom: 1.5em;
+	color: #333; /* Darker text for visibility */
+}
+
+.pricing-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* Center the items */
+	gap: 5.75em; /* Spacing between pricing items */
+}
+
+.pricing-item {
+	background: white; /* White background for each pricing card */
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	padding: 2em;
+	width: 250px; /* Fixed width for consistency */
+	transition: transform 0.3s; /* Smooth transform */
+}
+
+.pricing-item.highlight {
+	border: 2px solid #ffcc00; /* Highlight border */
+	background-color: #ffeaa7; /* Soft background color for highlight */
+}
+
+.pricing-item h3 {
+	font-size: 2em; /* Increase font size for price */
+	margin-bottom: 0.5em;
+	color: #333; /* Dark grey for prices */
+}
+
+.pricing-item p {
+	color: #777; /* Lighter grey for descriptions */
+	font-size: 1em; /* Consistent font size for descriptions */
+}
+
+/* Hover Effect */
+.pricing-item:hover {
+	transform: translateY(-5px); /* Slight lift on hover */
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+	.pricing-container {
+		flex-direction: column; /* Stack items vertically on small screens */
+		align-items: center; /* Center items */
+	}
+}
+
+/* Contact Section Styles */
+.contact-section {
+	padding: 2em;
+	background-color: #7c7272; /* Light background */
+	text-align: center;
+}
+
+.contact-section h2 {
+	font-size: 2.5em;
+	margin-bottom: 1em;
+	color: #fff; /* Darker text for better visibility */
+}
+
+.contact-form {
+	max-width: 600px; /* Maximum width of the form */
+	margin: 0 auto; /* Center the form */
+	background: white; /* White background for the form */
+	border-radius: 10px; /* Rounded corners */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	padding: 2em;
+}
+
+.form-group {
+	margin-bottom: 1.5em; /* Spacing between fields */
+	text-align: left; /* Align labels to the left */
+}
+
+.form-group label {
+	display: block; /* Make labels block elements */
+	margin-bottom: 0.5em; /* Space below labels */
+	font-weight: bold; /* Bold labels */
+}
+
+.form-group input,
+.form-group textarea {
+	width: 100%; /* Full width */
+	padding: 0.75em; /* Padding for comfort */
+	border: 1px solid #ccc; /* Light border */
+	border-radius: 5px; /* Rounded corners */
+	font-size: 1em; /* Font size */
+	transition: border-color 0.3s; /* Transition for border color */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+	border-color: #555; /* Darker border on focus */
+	outline: none; /* Remove default outline */
+}
+
+.form-group textarea {
+	resize: vertical; /* Allow vertical resizing only */
+	min-height: 150px; /* Minimum height for textarea */
+}
+
+.submit-button {
+	padding: 0.75em 1.5em; /* Padding for the button */
+	font-size: 1.1em; /* Font size */
+	color: #fff; /* White text */
+	background-color: #555; /* Button background */
+	border: none; /* No border */
+	border-radius: 5px; /* Rounded corners */
+	cursor: pointer; /* Pointer on hover */
+	transition: background-color 0.3s; /* Transition for background color */
+}
+
+.submit-button:hover {
+	background-color: #777; /* Darker shade on hover */
+}
+
+/* Footer Styles */
+.footer {
+	background-color: #333;
+	color: #fff;
+	padding: 2em;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+.footer-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #555;
+}
+
+.footer-logo h2 {
+	font-size: 2em;
+	color: #fff;
+}
+
+.footer-links {
+	display: flex;
+	gap: 2.75em;
+}
+
+.footer-links a {
+	color: #f5f5f5;
+	text-decoration: none;
+	font-size: 1em;
+}
+
+.footer-links a:hover {
+	color: #bbb;
+}
+/* 
+.footer-social {
+	display: flex;
+	gap: 1em;
+}
+
+.social-icon {
+	color: #f5f5f5;
+	font-size: 1.25em;
+	text-decoration: none;
+}
+
+.social-icon:hover {
+	color: #bbb;
+} */
+
+.footer-bottom {
+	margin-top: 1em;
+	color: #aaa;
+	font-size: 0.8em;
+}
