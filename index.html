@@ -16,11 +16,11 @@
 			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 			crossorigin="anonymous"
 		/>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"
-		></script>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/Toastify/1.11.2/Toastify.min.css"
+		/>
 	</head>
 
 	<body>
@@ -35,17 +35,18 @@
 				<a class="company-name">ASU Studio</a>
 
 				<!-- Navigation Links for Larger Screens -->
-				<nav class="nav-links">
+				<div class="nav-links">
 					<a href="#about">About</a>
 					<a href="#pricing">Pricing</a>
 					<a href="#services">Services</a>
 					<a href="#contact">Contact</a>
-				</nav>
+				</div>
 				<button
 					class="navbar-toggler"
 					type="button"
 					data-bs-toggle="offcanvas"
 					data-bs-target="#offcanvasNavbar"
+					aria-controls="offcanvasNavbar"
 					aria-controls="offcanvasNavbar"
 					aria-label="Toggle navigation"
 				>
@@ -276,6 +277,60 @@
 			</div>
 		</footer>
 
-		<script src="./script.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			document
+				.getElementById("contactForm")
+				.addEventListener("submit", function (event) {
+					event.preventDefault(); // Prevent the default form submission
+
+					const formData = new FormData(this);
+
+					fetch("contact-form-handler.php", {
+						method: "POST",
+						body: formData,
+					})
+						.then((response) => response.json()) // Parse JSON response
+						.then((data) => {
+							// Show toast notifications based on the response
+							if (data.status === "success") {
+								Toastify({
+									text: data.message,
+									duration: 3000, // Duration in milliseconds
+									gravity: "top", // `top` or `bottom`
+									position: "right", // `left`, `center` or `right`
+									backgroundColor:
+										"linear-gradient(to right, #00b09b, #96c93d)",
+									className: "info",
+								}).showToast(); // Show success toast
+							} else {
+								Toastify({
+									text: data.message,
+									duration: 3000,
+									gravity: "top",
+									position: "right",
+									backgroundColor:
+										"linear-gradient(to right, #ff5f6d, #ffc371)",
+									className: "error",
+								}).showToast(); // Show error toast
+							}
+						})
+						.catch((error) => {
+							Toastify({
+								text: "An error occurred: " + error,
+								duration: 3000,
+								gravity: "top",
+								position: "right",
+								backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+								className: "error",
+							}).showToast(); // Show general error toast
+						});
+				});
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Toastify/1.11.2/Toastify.min.js"></script>
 	</body>
 </html>
