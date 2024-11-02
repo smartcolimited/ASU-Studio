@@ -79,7 +79,7 @@ html {
 		display: none;
 	}
 	.hero {
-		background-attachment: scroll;
+		background-attachment: scroll !important;
 	}
 }
 
