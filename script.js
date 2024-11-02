@@ -12,9 +12,3 @@ document.getElementById('contactForm').addEventListener('submit', function (even
         alert('Please fill in all fields.');
     }
 });
-
-// JavaScript to toggle the dropdown menu on smaller screens
-function toggleMenu() {
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    dropdownMenu.classList.toggle("active");
-}
