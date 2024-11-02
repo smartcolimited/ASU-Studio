@@ -194,7 +194,7 @@
 			</div>
 		</section>
 
-		<!-- Contact Us Form Section -->
+		<!-- Contact us section -->
 		<section id="contact" class="contact-section">
 			<h2>Contact Us</h2>
 			<form class="contact-form" id="contact-form">
@@ -279,13 +279,14 @@
 		></script>
 		<script>
 			document
-				.getElementById("contactForm")
+				.getElementById("contact-form")
 				.addEventListener("submit", function (event) {
 					event.preventDefault(); // Prevent the default form submission
 
 					const formData = new FormData(this);
 
 					fetch("contact-form-handler.php", {
+						// Update with your actual PHP handler path
 						method: "POST",
 						body: formData,
 					})
