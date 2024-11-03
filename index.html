@@ -280,51 +280,59 @@
 		<script>
 			document
 				.getElementById("contact-form")
-				.addEventListener("submit", function (event) {
+				.addEventListener("submit", async function (event) {
 					event.preventDefault(); // Prevent the default form submission
 
-					const formData = new FormData(this);
+					// Collect form data
+					const name = document.getElementById("name").value;
+					const email = document.getElementById("email").value;
+					const message = document.getElementById("message").value;
 
-					fetch("./contact-form-handler.php", {
-						// Update with your actual PHP handler path
-						method: "POST",
-						body: formData,
-					})
-						.then((response) => response.json()) // Parse JSON response
-						.then((data) => {
-							// Show toast notifications based on the response
-							if (data.status === "success") {
-								Toastify({
-									text: data.message,
-									duration: 3000, // Duration in milliseconds
-									gravity: "top", // `top` or `bottom`
-									position: "right", // `left`, `center` or `right`
-									backgroundColor:
-										"linear-gradient(to right, #00b09b, #96c93d)",
-									className: "info",
-								}).showToast(); // Show success toast
-							} else {
-								Toastify({
-									text: data.message,
-									duration: 3000,
-									gravity: "top",
-									position: "right",
-									backgroundColor:
-										"linear-gradient(to right, #ff5f6d, #ffc371)",
-									className: "error",
-								}).showToast(); // Show error toast
-							}
-						})
-						.catch((error) => {
+					// Send a POST request to the Vercel API endpoint with JSON data
+					try {
+						const response = await fetch(
+							"https://asu-email-service.vercel.app/api/send-inquiry",
+							{
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify({ name, email, message }),
+							},
+						);
+
+						const data = await response.json();
+
+						// Show toast notifications based on the response
+						if (response.ok) {
 							Toastify({
-								text: "An error occurred: " + error,
+								text: "Inquiry sent successfully!",
+								duration: 3000,
+								gravity: "top",
+								position: "right",
+								backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+								className: "info",
+							}).showToast();
+						} else {
+							Toastify({
+								text: data.error || "Failed to send the inquiry.",
 								duration: 3000,
 								gravity: "top",
 								position: "right",
 								backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
 								className: "error",
-							}).showToast(); // Show general error toast
-						});
+							}).showToast();
+						}
+					} catch (error) {
+						Toastify({
+							text: "An error occurred: " + error.message,
+							duration: 3000,
+							gravity: "top",
+							position: "right",
+							backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+							className: "error",
+						}).showToast();
+					}
 				});
 		</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Toastify/1.11.2/Toastify.min.js"></script>
