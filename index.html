@@ -16,11 +16,6 @@
 			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 			crossorigin="anonymous"
 		/>
-
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/Toastify/1.11.2/Toastify.min.css"
-		/>
 	</head>
 
 	<body>
@@ -308,15 +303,14 @@
 
 						// Show toast notifications based on the response
 						if (response.ok) {
-							alert("Mail sent");
+							alert("Message received, check your Email!");
 						} else {
-							alert("Mail not sent");
+							alert("An error occurred: Mail not sent");
 						}
 					} catch (error) {
-						alert("Mail not sent");
+						alert("An error occurred: Mail not sent");
 					}
 				});
 		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Toastify/1.11.2/Toastify.min.js"></script>
 	</body>
 </html>
